@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "1094859042231",
+    "firebase_url": "https://apptatto.firebaseio.com",
+    "project_id": "apptatto",
+    "storage_bucket": "apptatto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094859042231:android:2e77b10cc125a96b",
+        "android_client_info": {
+          "package_name": "rduuke.apptatto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094859042231-gslgf4q28oj92u89kaisiujaqeeffq71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rduuke.apptatto",
+            "certificate_hash": "19e23484c775f7e0460a9c4e0ba6eeca744baae8"
+          }
+        },
+        {
+          "client_id": "1094859042231-26o52q2tr0tttecb5v3g23175ecrceu1.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1094859042231-26o52q2tr0tttecb5v3g23175ecrceu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDlLEFrjzXyxeJ9MKhP8V2NdzhV64yeko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094859042231-26o52q2tr0tttecb5v3g23175ecrceu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
