@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">appTatto</string>
+    <string name="email_input">Tu correo</string>
+    <string name="password_input">Contraseña</string>
+    <string name="button_login">Ingresar</string>
+    <string name="create_login">Crear nueva cuenta</string>
+    <string name="des">Logo for page</string>
+    <string name="action_cuenta">Configurar cuenta</string>
+    <string name="action_exit">Cerrar sesión</string>
+    <string name="action_search">Buscar</string>
+    <string name="register_btn">Crear cuenta</string>
+    <string name="register_login">¿Tienes ya una cuenta?</string>
+    <string name="resgiter_text">Contraseña</string>
+    <string name="register_confirm">Confirmar password</string>
+    <string name="setup_btn">Guardar</string>
+    <string name="setup_name">Nombre</string>
 </resources>

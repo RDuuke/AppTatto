@@ -8,59 +8,98 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText email, password;
-    Button register;
-    FirebaseAuth auth;
 
+    private EditText registerEmail,registerPassword, registerConfirmPassword;
+    private Button registerCreate, registerLogin;
+    private ProgressBar registerProgres;
+
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        registerEmail = (EditText) findViewById(R.id.register_email);
+        registerPassword = (EditText) findViewById(R.id.register_password);
+        registerConfirmPassword = (EditText) findViewById(R.id.register_confirm);
 
-        register = (Button) findViewById(R.id.register);
+        registerCreate = (Button) findViewById(R.id.register_btn);
+        registerLogin = (Button) findViewById(R.id.register_login);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        registerProgres = (ProgressBar) findViewById(R.id.register_progress);
+
+        registerLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userE = email.getText().toString();
-                String passwordE = password.getText().toString();
-
-                if (!TextUtils.isEmpty(userE) && !TextUtils.isEmpty(passwordE)) {
-                    auth.createUserWithEmailAndPassword(userE, passwordE)
-                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Toast.makeText(getApplicationContext(), "usuario creado correctamente",
-                                            Toast.LENGTH_LONG);
-                                    if (!task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "Ocurrio un problema",
-                                                Toast.LENGTH_LONG);
-                                    } else {
-
-                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-
-                                }
-                            });
-                } else {
-                    Toast.makeText(getApplicationContext(), "Agregar correo o contraseña", Toast.LENGTH_LONG).show();
-                }
-
+                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
             }
         });
+
+        registerCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = registerEmail.getText().toString();
+                String password = registerPassword.getText().toString();
+                String confirmPassword = registerConfirmPassword.getText().toString();
+
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmPassword)) {
+                    if (password.equals(confirmPassword)) {
+                        registerProgres.setVisibility(View.VISIBLE);
+
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()) {
+
+                                    Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
+                                    startActivity(setupIntent);
+                                    finish();
+                                } else {
+                                    String errorMessage = task.getException().getMessage();
+                                    Toast.makeText(RegisterActivity.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
+                                }
+                                registerProgres.setVisibility(View.INVISIBLE);
+                            }
+                        });
+
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Contraseña y confirmación de contraseña deben ser iguales", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this,"Error no iguales", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if( currentUser != null) {
+            sendToMain();
+        }
+    }
+
+    private void sendToMain() {
+        Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(mainIntent);
+        finish();
     }
 }

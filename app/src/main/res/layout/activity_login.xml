@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="rduuke.apptatto.RegisterActivity">
+    tools:context="rduuke.apptatto.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,19 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_progress"
-        app:srcCompat="@mipmap/register_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/login_progress"
+        app:srcCompat="@mipmap/login_page_logo" />
 
     <EditText
-        android:id="@+id/register_email"
+        android:id="@+id/login_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="@string/email_input"
@@ -35,11 +35,12 @@
         android:textColorHint="@color/whiteTransparent"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/register_confirm"
+        android:id="@+id/login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -47,19 +48,18 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
-        android:hint="@string/register_confirm"
+        android:hint="@string/password_input"
         android:inputType="textPassword"
         android:padding="16dp"
         android:textColor="@android:color/white"
         android:textColorHint="@color/whiteTransparent"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_password" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/login_enter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -69,23 +69,22 @@
         android:padding="16dp"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        android:text="@string/register_btn"
+        android:text="@string/button_login"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_confirm" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <Button
-        android:id="@+id/register_login"
+        android:id="@+id/login_create"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@android:color/white"
-        android:text="@string/register_login"
+        android:text="@string/create_login"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
-        android:id="@+id/register_progress"
+        android:id="@+id/login_progress"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -103,23 +102,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/register_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint="@string/resgiter_text"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@color/whiteTransparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_email" />
-
 </android.support.constraint.ConstraintLayout>
