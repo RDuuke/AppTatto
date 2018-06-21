@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginEmailTxt = (EditText) findViewById(R.id.login_email);
         loginPassText = (EditText) findViewById(R.id.login_password);
-
+        mAuth = FirebaseAuth.getInstance();
         loginBtn = (Button) findViewById(R.id.login_enter);
         loginCreBtn = (Button) findViewById(R.id.login_create);
 
@@ -41,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 String email = loginEmailTxt.getText().toString();
                 String password = loginPassText.getText().toString();
+
+                Log.d("[Email and Password]", email + " " + password);
 
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                     loginProgress.setVisibility(View.VISIBLE);
